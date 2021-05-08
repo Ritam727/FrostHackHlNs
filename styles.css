@@ -9,6 +9,7 @@
 }
 
 #myCanvas {
+	background-color: orange;
 	position:fixed; /* Forces canvas to background */
 	top:0px;
 	left:0px;
