@@ -11,82 +11,21 @@
             if (canvas.getContext) {
                 ctx = canvas.getContext("2d");
                 window.addEventListener('keydown', moveobj, true);
- 
-		        // BODY
-                ctx.beginPath();
-                ctx.moveTo(25, 150);
-        		ctx.bezierCurveTo(50, 130, 60, 120, 70, 120);
-        		ctx.moveTo(70, 120);
-        		ctx.lineTo(120, 120);
-        		ctx.bezierCurveTo(140, 130, 130, 125, 160, 150);
-        		ctx.quadraticCurveTo(190,160,190,180);
-        		ctx.lineTo(5, 180);
-        		ctx.quadraticCurveTo(5,150,25, 150);
-        		ctx.closePath();
-         
-        		var grd = ctx.createLinearGradient(120, 130, 120, 180);
-        		grd.addColorStop(0, '#FF0000');   
-        		grd.addColorStop(1, '#AE0000');
-         
-                ctx.fillStyle = grd;
-                ctx.fill();
-                ctx.beginPath();
-                ctx.rect(5, 180, 185,7);
-		        ctx.fillStyle = "#4B4B4B";
-                ctx.fill();
- 
-		        // WINDOW
-        		ctx.beginPath();
-        		ctx.moveTo(75, 125);
-        		ctx.lineTo(115, 125);
-        		ctx.lineTo(130, 150);
-        		ctx.lineTo(60, 150);
-        		ctx.closePath();
-        		var grd = ctx.createLinearGradient(70, 125, 130, 150);
-        		grd.addColorStop(0, '#bbb');   
-        		grd.addColorStop(1, '#696969');
-        		ctx.fillStyle = grd;
-        		ctx.fill();
-         
-        		ctx.moveTo(56, 125);
-        		ctx.lineTo(72, 125);
-        		ctx.lineTo(55, 150);
-        		ctx.lineTo(25, 150);
-        		ctx.closePath();
-        		var grd = ctx.createLinearGradient(50, 135, 100, 135);
-        		grd.addColorStop(0, '#bbb');   
-        		grd.addColorStop(1, '#696969');
-        		ctx.fillStyle = grd;
-        		ctx.fill();
-         
-        		// WHEELS
-        		ctx.beginPath();
-        		var gradient = ctx.createRadialGradient(50, 180, 2, 50,180, 15);
-        		gradient.addColorStop(0, 'white');
-        		gradient.addColorStop(1, '#3C3C3C');
-                ctx.arc(50, 180, 15,0, 2 * Math.PI, true);
-                ctx.fillStyle = gradient;
-                ctx.fill();
- 
-                ctx.beginPath();
-        		gradient = ctx.createRadialGradient(140, 180, 2, 140,180, 15);
-        		gradient.addColorStop(0, 'white');
-        		gradient.addColorStop(1, '#3C3C3C');
-                ctx.arc(140, 180, 15,0, 2 * Math.PI, true);
-		        ctx.fillStyle = gradient;
-                ctx.fill();
             }
         }
  
         function moveobj(evt) {
             ctx.fillStyle = "#ffffff";
-            ctx.rect(3, 5, 600, 350);
+            ctx.rect(0, 31, 99, 75);
             ctx.fill();
+            var image = document.getElementById("spaceship");
+            ctx.drawImage(image, 0, 31);
             if(document.getElementById("span").innerHTML == "Use arrow keys to move"){
+                document.getElementById("spaceship").style.display = "none";
                 switch (evt.keyCode) {
                     case 40:
                         ctx.save();
-                        ctx.translate(0, 5);
+                        ctx.translate(0, 15);
                         displayImage();
                         break;
                     case 37:
@@ -96,7 +35,7 @@
                         break;
                     case 38:
                         ctx.save();
-                        ctx.translate(0, -5);
+                        ctx.translate(0, -15);
                         displayImage();
                         break;
                     case 39:
@@ -105,8 +44,6 @@
                         displayImage();
                         break;
                 }
-            } else{
-                ctx.restore();
             }
         }
         function clickhere() {
@@ -119,5 +56,5 @@
 <span id="span"></span><br>
        <canvas id="myCanvas" width="1900px" height="870px">
     </canvas>
-    <p>Hello world</p>
+    <img id = "spaceship" src = "assets/spaceship.png"/>
 </body></html>
