@@ -1,73 +1,73 @@
 <!DOCTYPE html>
-<html><head>
-    <title>Draw and move the car object In HTML5</title>
-    <!--- Written by Hirndra sisodiya  for the authorcode.com--->
-    <link type = "text/css" rel = "stylesheet" href = "bootstrap.css">
-    <link type = "text/css" rel = "stylesheet" href = "styles.css">
-    <script>
-        var ctx, x = 0, y = 0;
-        function displayImage() {
-            canvas = document.getElementById("myCanvas");
-            if (canvas.getContext) {
-                ctx = canvas.getContext("2d");
-                window.addEventListener('keydown', moveobj, true);
-            }
-        }
- 
-        function moveobj(evt) {
-            ctx.fillStyle = "orange";
-            ctx.rect(0, 31, 99, 75);
-            ctx.fill();
-            var image = document.getElementById("spaceship");
-            ctx.drawImage(image, 0, 31);
-            console.log(x, y);
-            if(document.getElementById("span").innerHTML == "Use arrow keys to move"){
-                document.getElementById("spaceship").style.display = "none";
-                switch (evt.keyCode) {
-                    case 40:
-                        ctx.save();
-                        if(y > -810){
-                            ctx.translate(0, 15);
-                            y -= 15;
-                        }
-                        displayImage();
-                        break;
-                    case 37:
-                        ctx.save();
-                        if(x > 0){
-                            x -= 15;
-                            ctx.translate(-15, 0);
-                        }
-                        displayImage();
-                        break;
-                    case 38:
-                        ctx.save();
-                        if(y < 30){
-                            y += 15;
-                            ctx.translate(0, -15);
-                        }
-                        displayImage();
-                        break;
-                    case 39:
-                        ctx.save();
-                        if(x < 1800){
-                            x += 15;
-                            ctx.translate(15, 0);
-                        }
-                        displayImage();
-                        break;
+<html>
+    <head>
+        <title>Draw and move the car object In HTML5</title>
+        <link type = "text/css" rel = "stylesheet" href = "bootstrap.css">
+        <link type = "text/css" rel = "stylesheet" href = "styles.css">
+        <script>
+            var ctx, x = 0, y = 0;
+            function displayImage() {
+                canvas = document.getElementById("myCanvas");
+                if (canvas.getContext) {
+                    ctx = canvas.getContext("2d");
+                    window.addEventListener('keydown', moveobj, true);
                 }
             }
-        }
-        function clickhere() {
-            document.getElementById("span").innerHTML = "Use arrow keys to move";
-        }
-       </script>
-  </head>
+     
+            function moveobj(evt) {
+                ctx.fillStyle = "orange";
+                ctx.rect(0, 31, 99, 75);
+                ctx.fill();
+                var image = document.getElementById("spaceship");
+                ctx.drawImage(image, 0, 31);
+                console.log(x, y);
+                if(document.getElementById("span").innerHTML == "Use arrow keys to move"){
+                    document.getElementById("spaceship").style.display = "none";
+                    switch (evt.keyCode) {
+                        case 40:
+                            ctx.save();
+                            if(y > -810){
+                                ctx.translate(0, 15);
+                                y -= 15;
+                            }
+                            displayImage();
+                            break;
+                        case 37:
+                            ctx.save();
+                            if(x > 0){
+                                x -= 15;
+                                ctx.translate(-15, 0);
+                            }
+                            displayImage();
+                            break;
+                        case 38:
+                            ctx.save();
+                            if(y < 30){
+                                y += 15;
+                                ctx.translate(0, -15);
+                            }
+                            displayImage();
+                            break;
+                        case 39:
+                            ctx.save();
+                            if(x < 1800){
+                                x += 15;
+                                ctx.translate(15, 0);
+                            }
+                            displayImage();
+                            break;
+                    }
+                }
+            }
+            function clickhere() {
+                document.getElementById("span").innerHTML = "Use arrow keys to move";
+            }
+           </script>
+    </head>
     <body>
-<input id="Button1" type="button" value="Start the car" align="center" onclick="clickhere(); displayImage();">
-<span id="span"></span><br>
-       <canvas id="myCanvas" width="1980px" height="1080px" background-color="orange">
-    </canvas>
-    <img id = "spaceship" src = "assets/spaceship.png"/>
-</body></html>
+        <input id="Button1" type="button" value="Start the car" align="center" onclick="clickhere(); displayImage();">
+        <span id="span"></span><br>
+        <canvas id="myCanvas" width="1980px" height="1080px" background-color="orange"/>
+        <img id = "spaceship" src = "assets/spaceship.png"/>
+    </body>
+</html>
