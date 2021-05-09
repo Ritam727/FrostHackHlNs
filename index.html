@@ -21,7 +21,7 @@
                 ctx.drawImage(image, x, y);
             }
             function moveobj(evt) {
-                ctx.fillStyle = "#ffffff";
+                ctx.fillStyle = "white";
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 ctx.rect(x, y, 99, 75);
                 ctx.fill();
@@ -74,12 +74,13 @@
             }
         </script>
     </head>
-    <body>
+    <body style = "background-color: white;">
         <input id="Button1" type="button" value="Start the car" align="center" onclick="clickhere(); displayImage();">
         <span id="span"></span><br>
         <div class = "container">
             <div class = "row">
                 <div class = "row-md-12">
+                    <canvas id="myCanvas" width="1980px" height="1080px">
                     <canvas id="myCanvas" width="1980px" height="1080px">
                     </canvas>
                 </div>

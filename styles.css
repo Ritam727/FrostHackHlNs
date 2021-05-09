@@ -7,7 +7,6 @@
 	font-family: monospace;
 	font-size: 20px;
 }
-
 #myCanvas {
 	position:fixed; /* Forces canvas to background */
 	top:0px;
