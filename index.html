@@ -5,57 +5,67 @@
         <link type = "text/css" rel = "stylesheet" href = "bootstrap.css">
         <link type = "text/css" rel = "stylesheet" href = "styles.css">
         <script>
-            var ctx, x = 0, y = 0;
+            var ctx, x = 0, y = -31;
             function displayImage() {
                 canvas = document.getElementById("myCanvas");
                 if (canvas.getContext) {
                     ctx = canvas.getContext("2d");
                     window.addEventListener('keydown', moveobj, true);
+                    covidimg = document.getElementById("spaceship");
+                    linkimages(100, 100, covidimg);
                 }
             }
-     
+            
+            function linkimages(x, y, image){
+                ctx.rect(x, y, 100, 100);
+                ctx.drawImage(image, x, y);
+            }
             function moveobj(evt) {
-                ctx.fillStyle = "orange";
-                ctx.rect(0, 31, 99, 75);
+                ctx.fillStyle = "#ffffff";
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.rect(x, y, 99, 75);
                 ctx.fill();
                 var image = document.getElementById("spaceship");
-                ctx.drawImage(image, 0, 31);
-                console.log(x, y);
                 if(document.getElementById("span").innerHTML == "Use arrow keys to move"){
                     document.getElementById("spaceship").style.display = "none";
                     switch (evt.keyCode) {
                         case 40:
                             ctx.save();
-                            if(y > -810){
-                                ctx.translate(0, 15);
-                                y -= 15;
+                            if(y > -830){
+                                y -= 15;  
                             }
-                            displayImage();
+                            linkimages(100, 100, covidimg);
+                            ctx.drawImage(image, x, -y);
                             break;
                         case 37:
                             ctx.save();
                             if(x > 0){
                                 x -= 15;
-                                ctx.translate(-15, 0);
                             }
-                            displayImage();
+                            linkimages(100, 100, covidimg);
+                            ctx.drawImage(image, x, -y);
                             break;
                         case 38:
                             ctx.save();
-                            if(y < 30){
+                            if(y < -15){
                                 y += 15;
-                                ctx.translate(0, -15);
                             }
-                            displayImage();
+                            linkimages(100, 100, covidimg);
+                            ctx.drawImage(image, x, -y);
                             break;
                         case 39:
                             ctx.save();
-                            if(x < 1800){
+                            if(x < screen.width-108){
                                 x += 15;
-                                ctx.translate(15, 0);
                             }
-                            displayImage();
+                            linkimages(100, 100, covidimg);
+                            ctx.drawImage(image, x, -y);
                             break;
+                        case 13:
+                            ctx.drawImage(image, x, -y);    
+                            if(x <= 120 && x >= 60 && y >= -106 && y <= -76){
+                                window.open("https://www.google.com", "_blank");
+                            }
                     }
                 }
             }
@@ -67,7 +77,14 @@
     <body>
         <input id="Button1" type="button" value="Start the car" align="center" onclick="clickhere(); displayImage();">
         <span id="span"></span><br>
-        <canvas id="myCanvas" width="1980px" height="1080px" background-color="orange"/>
+        <div class = "container">
+            <div class = "row">
+                <div class = "row-md-12">
+                    <canvas id="myCanvas" width="1980px" height="1080px">
+                    </canvas>
+                </div>
+            </div>
+        </div>
         <img id = "spaceship" src = "assets/spaceship.png"/>
     </body>
 </html>
