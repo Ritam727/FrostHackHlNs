@@ -10,6 +10,9 @@
 #para {
 	color:white;
 }
+h5,p {
+	color: white;
+}
 #myCanvas {
 	background-color: transparent;
 	background-image: url("assets/sky.jpg");
@@ -20,3 +23,35 @@
 	padding:0;
 	z-index:-1; 
   }
+
+div.card-group {
+	opacity: .7;
+}
+
+.card {
+	display: flex;
+	height: 150px;
+	width: 200px;
+	background-color: #17141d;
+	border-radius: 10px;
+	box-shadow: -1rem 0 3rem #000;
+	/*   margin-left: -50px; */
+	transition: 0.4s ease-out;
+	position: relative;
+	left: 0px;
+}
+
+.card:not(:first-child) {
+	margin-left: -50px;
+}
+
+.card:hover {
+	transform: translateY(-20px);
+	transition: 0.4s ease-out;
+}
+
+.card:hover ~ .card {
+	position: relative;
+	left: 50px;
+	transition: 0.4s ease-out;
+}

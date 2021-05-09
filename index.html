@@ -1,79 +1,147 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Draw and move the car object In HTML5</title>
-        <link type = "text/css" rel = "stylesheet" href = "bootstrap.css">
-        <link type = "text/css" rel = "stylesheet" href = "styles.css">
-        <script>
-            var ctx, x = 0, y = -31;
-            function displayImage() {
-                canvas = document.getElementById("myCanvas");
-                if (canvas.getContext) {
-                    ctx = canvas.getContext("2d");
-                    window.addEventListener('keydown', moveobj, true);
-                }
-            }
-            
-            function moveimg(){
 
+<head>
+    <title>Draw and move the car object In HTML5</title>
+    <link type="text/css" rel="stylesheet" href="bootstrap.css">
+    <link type="text/css" rel="stylesheet" href="styles.css">
+    <script>
+        var ctx, x = 0, y = -31;
+        function displayImage() {
+            canvas = document.getElementById("myCanvas");
+            if (canvas.getContext) {
+                ctx = canvas.getContext("2d");
+                window.addEventListener('keydown', moveobj, true);
             }
-            function moveobj(evt) {
-                ctx.fillStyle = "none";
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.rect(x, y, 99, 75);
-                ctx.fill();
-                var image = document.getElementById("spaceship");
-                console.log(x, y);
-                if(document.getElementById("span").innerHTML == "Use arrow keys to move"){
-                    document.getElementById("spaceship").style.display = "none";
-                    switch (evt.keyCode) {
-                        case 40:
-                            ctx.save();
-                            if(y > -810){
-                                y -= 15;
-                                ctx.drawImage(image, x, -y);   
-                            }
-                            break;
-                        case 37:
-                            ctx.save();
-                            if(x > 0){
-                                x -= 15;
-                                ctx.drawImage(image, x, -y);
-                            }
-                            break;
-                        case 38:
-                            ctx.save();
-                            if(y < 30){
-                                y += 15;
-                                ctx.drawImage(image, x, -y);
-                            }
-                            break;
-                        case 39:
-                            ctx.save();
-                            if(x < screen.width-108){
-                                x += 15;
-                                ctx.drawImage(image, x, -y);
-                            }
-                            break;
-                    }
+        }
+
+        function moveimg() {
+
+        }
+        function moveobj(evt) {
+            ctx.fillStyle = "none";
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            ctx.rect(x, y, 99, 75);
+            ctx.fill();
+            var image = document.getElementById("spaceship");
+            console.log(x, y);
+            if (document.getElementById("span").innerHTML == "Use arrow keys to move") {
+                document.getElementById("spaceship").style.display = "none";
+                switch (evt.keyCode) {
+                    case 40:
+                        ctx.save();
+                        if (y > -810) {
+                            y -= 15;
+                            ctx.drawImage(image, x, -y);
+                        }
+                        break;
+                    case 37:
+                        ctx.save();
+                        if (x > 0) {
+                            x -= 15;
+                            ctx.drawImage(image, x, -y);
+                        }
+                        break;
+                    case 38:
+                        ctx.save();
+                        if (y < 30) {
+                            y += 15;
+                            ctx.drawImage(image, x, -y);
+                        }
+                        break;
+                    case 39:
+                        ctx.save();
+                        if (x < screen.width - 108) {
+                            x += 15;
+                            ctx.drawImage(image, x, -y);
+                        }
+                        break;
+                    case 13:
+                        if(x>0)
+                        {
+                            window.open("https://www.webmd.com/lung/covid-treatment-home-hospital","_blank")
+                        }
                 }
             }
-            function clickhere() {
-                document.getElementById("span").innerHTML = "Use arrow keys to move";
-            }
-        </script>
-    </head>
-    <body style = "background-color:transparent">
-        <input id="Button1" type="button" value="Start the car" align="center" onclick="clickhere(); displayImage();">
-        <span id="span"></span><br>
-        <div class = "container">
-            <div class = "row">
-                <div class = "row-md-12">
-                    <canvas id="myCanvas" width="1980px" height="1080px" background-color="orange">
-                    </canvas>
-                </div>
+        }
+        function clickhere() {
+            document.getElementById("span").innerHTML = "Use arrow keys to move";
+        }
+    </script>
+</head>
+
+<body style="background-color:transparent">
+    <input id="Button1" type="button" value="Start the car" onclick="clickhere(); displayImage();">
+    <span id="span"></span><br>
+    <div class="container">
+        <div class="row">
+            <div class="row-md-12">
+                <canvas id="myCanvas" width="1980px" height="1080px" background-color="orange">
+                </canvas>
             </div>
         </div>
-        <img id = "spaceship" src = "assets/spaceship.png"/>
-    </body>
+    </div>
+    <img id="spaceship" src="assets/spaceship.png" />
+    <!-- <img id = "spaceship2" height="500" width="500" src = "assets/spaceship.png"/> -->
+
+    <div class="card-group">
+        <div class="card">
+            <a href="https://www.webmd.com/lung/covid-treatment-home-hospital" target="_blank"> <img
+                    class="card-img-top" src="assets/covid1.jpg" alt="Card image cap"></a>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+              
+            </div>
+        </div>
+        <div class="card">
+            <a href="https://www.webmd.com/lung/covid-treatment-home-hospital" target="_blank"> <img class="card-img-top" src="assets/covid1.jpg" alt="Card image cap"></a>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+              
+            </div>
+        </div>
+        <div class="card">
+            <a href="https://www.webmd.com/lung/covid-treatment-home-hospital" target="_blank"> <img
+                    class="card-img-top" src="assets/covid1.jpg" alt="Card image cap"></a>
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This content is a little bit longer.</p>
+            </div>
+            <div class="card-footer">
+              
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="assets/covid1.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            </div>
+            <div class="card-footer">
+              
+            </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="assets/covid1.jpg" alt="Card image cap">
+            <div class="card-body">
+                <h5 class="card-title">Card title</h5>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional
+                    content. This card has even longer content than the first to show that equal height action.</p>
+            </div>
+            <div class="card-footer">
+              
+            </div>
+        </div>
+    </div>
+</body>
+
 </html>
