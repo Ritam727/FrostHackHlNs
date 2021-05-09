@@ -7,9 +7,12 @@
 	font-family: monospace;
 	font-size: 20px;
 }
-
+#para {
+	color:white;
+}
 #myCanvas {
-	background-color: orange;
+	background-color: transparent;
+	background-image: url("assets/sky.jpg");
 	position:fixed; /* Forces canvas to background */
 	top:0px;
 	left:0px;

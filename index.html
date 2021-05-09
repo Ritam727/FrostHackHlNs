@@ -5,7 +5,7 @@
         <link type = "text/css" rel = "stylesheet" href = "bootstrap.css">
         <link type = "text/css" rel = "stylesheet" href = "styles.css">
         <script>
-            var ctx, x = 0, y = 0;
+            var ctx, x = 0, y = -31;
             function displayImage() {
                 canvas = document.getElementById("myCanvas");
                 if (canvas.getContext) {
@@ -13,13 +13,16 @@
                     window.addEventListener('keydown', moveobj, true);
                 }
             }
-     
+            
+            function moveimg(){
+
+            }
             function moveobj(evt) {
-                ctx.fillStyle = "orange";
-                ctx.rect(0, 31, 99, 75);
+                ctx.fillStyle = "none";
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.rect(x, y, 99, 75);
                 ctx.fill();
                 var image = document.getElementById("spaceship");
-                ctx.drawImage(image, 0, 31);
                 console.log(x, y);
                 if(document.getElementById("span").innerHTML == "Use arrow keys to move"){
                     document.getElementById("spaceship").style.display = "none";
@@ -27,34 +30,30 @@
                         case 40:
                             ctx.save();
                             if(y > -810){
-                                ctx.translate(0, 15);
                                 y -= 15;
+                                ctx.drawImage(image, x, -y);   
                             }
-                            displayImage();
                             break;
                         case 37:
                             ctx.save();
                             if(x > 0){
                                 x -= 15;
-                                ctx.translate(-15, 0);
+                                ctx.drawImage(image, x, -y);
                             }
-                            displayImage();
                             break;
                         case 38:
                             ctx.save();
                             if(y < 30){
                                 y += 15;
-                                ctx.translate(0, -15);
+                                ctx.drawImage(image, x, -y);
                             }
-                            displayImage();
                             break;
                         case 39:
                             ctx.save();
-                            if(x < 1800){
+                            if(x < screen.width-108){
                                 x += 15;
-                                ctx.translate(15, 0);
+                                ctx.drawImage(image, x, -y);
                             }
-                            displayImage();
                             break;
                     }
                 }
@@ -64,10 +63,17 @@
             }
         </script>
     </head>
-    <body>
+    <body style = "background-color:transparent">
         <input id="Button1" type="button" value="Start the car" align="center" onclick="clickhere(); displayImage();">
         <span id="span"></span><br>
-        <canvas id="myCanvas" width="1980px" height="1080px" background-color="orange"/>
+        <div class = "container">
+            <div class = "row">
+                <div class = "row-md-12">
+                    <canvas id="myCanvas" width="1980px" height="1080px" background-color="orange">
+                    </canvas>
+                </div>
+            </div>
+        </div>
         <img id = "spaceship" src = "assets/spaceship.png"/>
     </body>
 </html>
